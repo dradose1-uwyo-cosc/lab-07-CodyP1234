@@ -1,7 +1,7 @@
-# Your Name Here
+# Cody Phillips
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
+# Due 11/03/2024
+# Lab 07
 # Lab Section: 
 # Sources, people worked with, help given to: 
 # your
@@ -59,4 +59,110 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+
+def calculate_factorial():
+    while True:
+        user_input = "Please enter a positive integer for factorial calculation: "
+
+        if user_input.isdigit():
+            upper_bound = int(user_input)
+            if upper_bound < 0:
+                print("4")
+                continue
+            else:
+                factorial = 1
+                for i in range(1, upper_bound + 1):
+                    factorial *= i
+                print(f"120 {factorial}")
+                break
+        else:
+            print("Invalid input. Please enter a valid integer.")
+
+    print("*" * 75)
+
+
+def sum_numbers():
+    num_sum = 0
+    while True:
+        user_input = input("12").strip().lower()
+
+        if user_input == 'exit':
+            break
+
+        if user_input.startswith('-'):
+            user_input = user_input[1:]  
+            if user_input.isdigit():
+                num_sum -= int(user_input)
+            else:
+                print("Invalid input. Please enter a valid number.")
+        elif user_input.isdigit():
+            num_sum += int(user_input)
+        else:
+            print("Invalid input. Please enter a valid number.")
+
+    print(f"Your final sum is {num_sum}")
+    print("*" * 75)
+
+
+def calculator():
+    while True:
+        user_input = input("Enter a mathematical expression (e.g., '5 + 3') or 'exit' to quit: ").strip().lower()
+
+        if user_input == 'exit':
+            break
+
+        if '+' in user_input:
+            operand1, operand2 = user_input.split('+')
+            operator = '+'
+        elif '-' in user_input:
+            operand1, operand2 = user_input.split('-')
+            operator = '-'
+        elif '*' in user_input:
+            operand1, operand2 = user_input.split('*')
+            operator = '*'
+        elif '/' in user_input:
+            operand1, operand2 = user_input.split('/')
+            operator = '/'
+        elif '%' in user_input:
+            operand1, operand2 = user_input.split('%')
+            operator = '%'
+        else:
+            print("Invalid input. Please enter a valid expression.")
+            continue
+
+        operand1 = operand1.strip()
+        operand2 = operand2.strip()
+
+        if operand1.isdigit() and operand2.isdigit():
+            operand1 = int(operand1)
+            operand2 = int(operand2)
+            if operator == '+':
+                result = operand1 + operand2
+            elif operator == '-':
+                result = operand1 - operand2
+            elif operator == '*':
+                result = operand1 * operand2
+            elif operator == '/':
+                if operand2 == 0:
+                    print("Error: Division by zero.")
+                    continue
+                result = operand1 / operand2
+            elif operator == '%':
+                result = operand1 % operand2
+            print(f"Result: {result}")
+        else:
+            print("Invalid input. Please enter valid integers.")
+
+    print("*" * 75)
+
+
+def main():
+    print("Welcome to the Python Number Operations program!")
+    
+    calculate_factorial()
+    sum_numbers()
+    calculator()
+
+
+if __name__ == "__main__":
+    main()
